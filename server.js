@@ -16,10 +16,12 @@ Sentry.init({ dsn: 'https://ee07cf6a447e48e28344b00856041d26@sentry.io/1511200' 
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : 'per123',
-    database : 'smartbrain'
+		connectionString: process.env.DATABASE_URL,  //heroku postgres docs
+		ssl: true,  //heroku postgres docs https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
+		// host : '127.0.0.1',  // for local database
+    // user : 'postgres',
+    // password : 'per123',
+    // database : 'smartbrain'
   }
 });
 
